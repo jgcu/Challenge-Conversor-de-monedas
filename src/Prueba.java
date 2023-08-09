@@ -1,5 +1,6 @@
 
 import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
 
 public class Prueba {
 	
@@ -31,6 +32,7 @@ public class Prueba {
 		String[] opciones = {"Dólar","Euro","Libras Esterlinas","Yen Japonés","Won sul-coreano"};
 		Moneda[] monedas = {dolar, euro, libra, yen, won};
 		
+		DecimalFormat df = new DecimalFormat("#.00");
 	
 		
 		int opcion = JOptionPane.showOptionDialog(null, "Escoge como quieres convertir", "Menú", 0, JOptionPane.QUESTION_MESSAGE, null, convertir, "");
@@ -46,7 +48,7 @@ public class Prueba {
 				int monedaAC = JOptionPane.showOptionDialog(null, "Escoge a que moneda quieres convertir", "Menú", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "");
 			
 				resultado = cantidad / monedas[monedaAC].getValorMXN();
-				JOptionPane.showMessageDialog(null, cantidad + " MXN equivale a " + resultado + " " + monedas[monedaAC].getNombre());
+				JOptionPane.showMessageDialog(null, cantidad + " MXN equivale a " + df.format(resultado) + " " + monedas[monedaAC].getNombre());
 			
 			}
 			catch(NumberFormatException error)
@@ -67,7 +69,7 @@ public class Prueba {
 				
 				
 				resultado = cantidad * monedas[miMoneda].getValorMXN();
-				JOptionPane.showMessageDialog(null, cantidad + " " + monedas[miMoneda].getNombre() + " equivale a " + resultado + " MXN");
+				JOptionPane.showMessageDialog(null, cantidad + " " + monedas[miMoneda].getNombre() + " equivale a " + df.format(resultado) + " MXN");
 				
 			}
 			catch(NumberFormatException error)
